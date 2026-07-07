@@ -1,0 +1,38 @@
+{
+  "name": "gas-api-only",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Google Apps Script web-app JSON API (server only).",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "node scripts/build-server.js",
+    "build:full": "pnpm typecheck && pnpm format && pnpm lint:fix && pnpm build",
+    "push": "pnpm lint:fix && pnpm format && pnpm typecheck && pnpm build && ncp .clasp-dev.json .clasp.json && clasp push --force",
+    "push:prod": "pnpm lint:fix && pnpm format && pnpm typecheck && pnpm build && ncp .clasp-prod.json .clasp.json && clasp push --force",
+    "push:fast": "pnpm build && ncp .clasp-dev.json .clasp.json && clasp push --force"
+  },
+  "packageManager": "pnpm@11.10.0",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^2.0.11",
+    "esbuild": "^0.28.0",
+    "esbuild-gas-plugin": "^0.10.0",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-googleappsscript": "^1.0.5",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-unicorn": "^65.0.1",
+    "globals": "^17.6.0",
+    "ncp": "^2.0.0",
+    "prettier": "^3.8.4",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.61.0"
+  },
+  "dependencies": {}
+}

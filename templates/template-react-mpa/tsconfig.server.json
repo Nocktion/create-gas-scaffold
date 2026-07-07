@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": true,
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "types": ["google-apps-script"],
+    "lib": ["ES2022"]
+  },
+  "include": ["src/server"]
+}

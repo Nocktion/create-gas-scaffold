@@ -1,0 +1,49 @@
+{
+  "name": "gas-react-spa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Google Apps Script React single-page app (server + Vite single-file client).",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.server.json && tsc -p tsconfig.client.json",
+    "dev": "vite",
+    "build": "node scripts/build-server.js && node scripts/build-client.js",
+    "build:full": "pnpm typecheck && pnpm format && pnpm lint:fix && pnpm build",
+    "push": "pnpm lint:fix && pnpm format && pnpm typecheck && pnpm build && ncp .clasp-dev.json .clasp.json && clasp push --force",
+    "push:prod": "pnpm lint:fix && pnpm format && pnpm typecheck && pnpm build && ncp .clasp-prod.json .clasp.json && clasp push --force",
+    "push:fast": "pnpm build && ncp .clasp-dev.json .clasp.json && clasp push --force"
+  },
+  "packageManager": "pnpm@11.10.0",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^2.0.11",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/react-modal": "^3.16.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "esbuild": "^0.28.0",
+    "esbuild-gas-plugin": "^0.10.0",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-googleappsscript": "^1.0.5",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-unicorn": "^65.0.1",
+    "globals": "^17.6.0",
+    "ncp": "^2.0.0",
+    "prettier": "^3.8.4",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.61.0",
+    "vite": "^8.0.16",
+    "vite-plugin-singlefile": "^2.3.3"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-modal": "^3.16.3"
+  }
+}

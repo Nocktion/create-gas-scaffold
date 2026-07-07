@@ -1,0 +1,48 @@
+{
+  "name": "create-gas-scaffold",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Nocktion",
+  "description": "Scaffold a TypeScript Google Apps Script project in seconds",
+  "license": "MIT",
+  "keywords": [
+    "google-apps-script",
+    "gas"
+  ],
+  "bin": {
+    "create-gas-scaffold": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nocktion/create-gas-scaffold.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nocktion/create-gas-scaffold/issues"
+  },
+  "homepage": "https://github.com/Nocktion/create-gas-scaffold",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.json",
+    "dev": "node src/index.ts",
+    "build": "node scripts/build.js",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@clack/prompts": "^1.7.0",
+    "@types/node": "^26.1.0",
+    "esbuild": "^0.28.1",
+    "prettier": "^3.9.4",
+    "typescript": "^6.0.3"
+  }
+}
