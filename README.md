@@ -12,8 +12,6 @@ npm create gas-scaffold@latest
 pnpm dlx create-gas-scaffold
 ```
 
-> Not published to npm yet — until then, run it locally (see [Developing the generator](#developing-the-generator)).
-
 The wizard asks four questions:
 
 1. **Project name** — becomes the target folder and the (slugified) `package.json` name. Enter `.` to scaffold into the current directory.
