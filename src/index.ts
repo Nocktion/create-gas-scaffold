@@ -1,6 +1,6 @@
 import { cancel, intro, isCancel, outro, select, text } from '@clack/prompts';
 import { cpSync, existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 intro('create-gas-scaffold');
@@ -52,7 +52,10 @@ const targetDir = projectName === '.' ? process.cwd() : join(process.cwd(), proj
 
 cpSync(templateDir, targetDir, {
   recursive: true,
-  filter: (src) => !/[\\/](node_modules|dist)([\\/]|$)/.test(src),
+  filter: (src) => {
+    const rel = relative(templateDir, src);
+    return !rel.split(sep).some((seg) => seg === 'node_modules' || seg === 'dist');
+  },
 });
 
 const dictionary: [string, string][] = [
